@@ -25,3 +25,8 @@ second()
 
 while dispatch() > 0 do
 end
+
+-- Make sure to exit the program!
+-- Should not be needed.. but for some reason this prevents random segfaults on exit
+-- Prevents dangling threads maybe?
+os.exit(0)
