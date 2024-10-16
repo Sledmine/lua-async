@@ -1,6 +1,7 @@
 require "luna"
 local async = require "async".async
 local dispatch = require "async".dispatch
+local curl = require "curl-cli"
 
 local first = async(function (await)
     local time = os.time()
