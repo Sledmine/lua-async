@@ -2,7 +2,7 @@ local lanes = require "lanes"
 
 local async = {}
 
-async._VERSION = "1.0.1"
+async._VERSION = "1.0.2"
 
 local asyncLibs = "*"
 THREAD_LANES = {}
@@ -48,9 +48,6 @@ function async.dispatch()
     for index, lane in ipairs(THREAD_LANES) do
         --print(lane.thread.status)
         if lane.thread.status == "done" then
-            -- Maybe not needed, just making sure corutine is dead after thread is done
-            coroutine.resume(lane.co)
-            
             table.remove(THREAD_LANES, index)
             lane.callback(lane.thread[1])
         elseif lane.thread.status == "error" then
